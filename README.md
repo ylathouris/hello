@@ -1,2 +1,9 @@
 # hello
-Hello World Serverless
+
+A simple Hello World serverless application.
+
+Architecture Decisions:
+
+*
+
+
