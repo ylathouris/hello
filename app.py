@@ -30,7 +30,7 @@ def auth(auth_request):
 
 
 @app.route("/", methods=["GET"], authorizer=auth)
-def index():
+def hello():
     app.log.debug("Running...")
     context = app.current_request.context
     return {"message": "Hello World"}
