@@ -52,27 +52,8 @@ EOF
 }
 
 resource "aws_api_gateway_rest_api" "rest_api" {
-  # body = data.template_file.swagger.rendered
-  name = var.app
-
-  binary_media_types = [
-    "application/octet-stream",
-    "application/x-tar",
-    "application/zip",
-    "audio/basic",
-    "audio/ogg",
-    "audio/mp4",
-    "audio/mpeg",
-    "audio/wav",
-    "audio/webm",
-    "image/png",
-    "image/jpg",
-    "image/jpeg",
-    "image/gif",
-    "video/ogg",
-    "video/mpeg",
-    "video/webm"
-  ]
+  name               = var.app
+  binary_media_types = ["*"]
 
   endpoint_configuration {
     types = ["EDGE"]
