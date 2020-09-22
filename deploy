@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+chalice package infra/
+
+cd infra/
+terraform init
+terraform plan -var-file=../dontcommit.tfvars
+
+read -p "Continue with the plan? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+
+terraform apply -auto-approve -var-file=../dontcommit.tfvars
+
+rm sam.json
+rm deployment.zip

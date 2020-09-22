@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+chalice package infra/
+
+cd infra/
+terraform init
+terraform destroy -var-file=../dontcommit.tfvars
+
+rm sam.json
+rm deployment.zip
