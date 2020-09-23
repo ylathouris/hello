@@ -1,3 +1,6 @@
+[Home](../../README.md)
+
+
 # 5. Test Framework
 
 Date: 2020-09-21
@@ -25,6 +28,10 @@ from interacting with external services.
 * Community standard (outside the standard library)
 * Good documentation
 * Easy to write/read
+
+<br/>
+
+[Previous](004-serverless-framework.md) | [Next](006-access-control.md)
 
 
 [Python]: https://www.python.org/downloads/release/python-380/
