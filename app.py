@@ -29,5 +29,5 @@ def auth(auth_request):
 @app.route("/", methods=["GET"], authorizer=auth)
 def hello():
     context = app.current_request.context
-    app.log(context)
+    app.log.info(context)
     return {"message": "Hello World"}
