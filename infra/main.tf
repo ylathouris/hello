@@ -4,6 +4,10 @@ provider "aws" {
   region  = var.region
 }
 
+provider "template" {
+  version = "~> 2"
+}
+
 resource "aws_iam_role" "default_role" {
   name               = "${var.app}-role"
   assume_role_policy = <<EOF
@@ -53,6 +57,7 @@ EOF
 
 resource "aws_api_gateway_rest_api" "rest_api" {
   name               = var.app
+  body               = data.template_file.swagger.rendered
   binary_media_types = ["*"]
 
   endpoint_configuration {
@@ -61,8 +66,9 @@ resource "aws_api_gateway_rest_api" "rest_api" {
 }
 
 resource "aws_api_gateway_deployment" "rest_api" {
-  stage_name  = "api"
-  rest_api_id = aws_api_gateway_rest_api.rest_api.id
+  stage_name        = "api"
+  stage_description = md5(data.template_file.swagger.rendered)
+  rest_api_id       = aws_api_gateway_rest_api.rest_api.id
 
   lifecycle {
     create_before_destroy = true
@@ -103,6 +109,77 @@ resource "aws_lambda_permission" "auth_invoke" {
   action        = "lambda:InvokeFunction"
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.rest_api.execution_arn}/*"
+}
+
+data "template_file" "swagger" {
+  template = <<EOF
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "hello"
+  },
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "${aws_lambda_function.api_handler.invoke_arn}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "contentHandling": "CONVERT_TO_TEXT",
+          "type": "aws_proxy"
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    }
+  },
+  "x-amazon-apigateway-binary-media-types": ["*"],
+  "securityDefinitions": {
+    "auth": {
+      "in": "header",
+      "type": "apiKey",
+      "name": "Authorization",
+      "x-amazon-apigateway-authtype":
+      "custom", "x-amazon-apigateway-authorizer": {
+        "type": "token",
+        "authorizerUri": "${aws_lambda_function.auth.invoke_arn}"
+      }
+    }
+  }
+}
+EOF
 }
 
 output "url" {
