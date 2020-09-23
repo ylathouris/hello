@@ -1,4 +1,6 @@
-# 2. Compute
+[Home](../../README.md)
+ 
+ # 2. Compute
 
 Date: 2020-09-21
 
@@ -32,6 +34,9 @@ We will use AWS Lambda for this particular assignment.
 * Cold starts
 * Vendor lock-in (i.e. containers are more portable)
 * See [AWS Lambda Limits] for more details
+
+
+[Previous](001-record-decisions.md) | [Next](003-runtime.md)
 
 
 [AWS Lambda Limits]: https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html
