@@ -35,6 +35,7 @@ We will use AWS Lambda for this particular assignment.
 * Vendor lock-in (i.e. containers are more portable)
 * See [AWS Lambda Limits] for more details
 
+<br/>
 
 [Previous](001-record-decisions.md) | [Next](003-runtime.md)
 
