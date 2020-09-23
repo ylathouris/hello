@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  tests:
+    docker:
+      - image: circleci/python:3.8.1
+
+    steps:
+      - checkout
+      - run:
+          working_directory: ~/project/hello
+          name: Install
+          command: pip install -r requirements.dev.txt
+      - run:
+          working_directory: ~/project/hello
+          name: Test
+          command: pytest tests/
+
+workflows:
+  dev:
+    jobs:
+      - tests
