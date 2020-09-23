@@ -8,11 +8,11 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: ~/project/hello
+          # working_directory: ~/project/hello
           name: Install
           command: pip install -r requirements.dev.txt
       - run:
-          working_directory: ~/project/hello
+          # working_directory: ~/project/hello
           name: Test
           command: pytest tests/
 
