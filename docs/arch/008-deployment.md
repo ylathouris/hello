@@ -1,3 +1,6 @@
+[Home](../../README.md)
+
+
 # 8. Deployment
 
 Date: 2020-09-21
@@ -37,6 +40,11 @@ we will use modules to create reusable components.
 **Cons:**
 
 * Deployments can not be managed by [Chalice]
+
+<br/>
+
+[Previous](007-secrets.md)
+
 
 [Chalice]: https://aws.github.io/chalice/
 [Terraform]: https://www.terraform.io/
