@@ -1,4 +1,4 @@
-# 2. AWS Lambda
+# 2. Compute
 
 Date: 2020-09-21
 

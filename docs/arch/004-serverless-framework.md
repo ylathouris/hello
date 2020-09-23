@@ -1,4 +1,4 @@
-# 4. Chalice Framework
+# 4. Serverless Framework
 
 Date: 2020-09-21
 
@@ -8,7 +8,8 @@ Accepted
 
 ## Context
 
-We are building a `"Hello World"` application with AWS Lambda. What tools or frameworks can we leverage?
+We are building a `"Hello World"` application with AWS Lambda. What
+tools or frameworks can we leverage?
 
 ## Decision
 
