@@ -4,6 +4,25 @@
 
 A simple Hello World serverless application.
 
+### Test
+
+```shell
+$ ./test
+```
+
+### Deploy
+
+```shell
+$ ./deploy
+```
+
+### Destroy
+
+```shell
+$ ./destroy
+```
+
+
 ### Architecture Decisions (ADRs)
 
 * [Record Decisions](docs/arch/001-record-decisions.md)
