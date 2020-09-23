@@ -1,4 +1,6 @@
-# hello
+[![CircleCI](https://circleci.com/gh/ylathouris/hello.svg?style=shield)](https://circleci.com/gh/ylathouris/hello)  ![Coverage](coverage.svg)
+
+# Hello
 
 A simple Hello World serverless application.
 

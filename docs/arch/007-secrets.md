@@ -1,3 +1,6 @@
+[Home](../../README.md)
+
+
 # 7. Secrets
 
 Date: 2020-09-21
@@ -25,3 +28,7 @@ We are going to use AWS SSM. We will store our secrets as Secure Strings.
 **Cons:**
 
 * Not as feature rich as AWS Secrets Manager
+
+<br/>
+
+[Previous](006-access-control.md) | [Next](008-deployment.md)
