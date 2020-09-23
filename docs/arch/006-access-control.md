@@ -1,3 +1,6 @@
+[Home](../../README.md)
+
+
 # 6. Access Control
 
 Date: 2020-09-21
@@ -37,6 +40,12 @@ Lambda function. In [Chalice], this is referred to as a Custom Authorizer
 * Requires an additional AWS Lambda
 * Cached responses may cause issues for expired/revoked access
 * May require addition services (secrets, user details, etc.)
+
+
+<br/>
+
+[Previous](005-test-framework.md) | [Next](007-secrets.md)
+
 
 [Chalice]: https://aws.github.io/chalice/
 [Chalice Authorizers]: https://aws.github.io/chalice/api.html#authorization
